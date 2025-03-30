@@ -1,0 +1,48 @@
+{
+  "name": "whatsapp-bailyes-microservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "show": "ls -la",
+    "build": "etsc",
+    "dev": "nodemon src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ok": "npm run build && npm run start"
+  },
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "baileys_auth_info/*",
+      "baileys_store.json"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.2.0",
+    "@whiskeysockets/baileys": "^6.4.1",
+    "baileys-bottle": "^2.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "qrcode": "^1.5.3",
+    "qrcode-terminal": "^0.12.0",
+    "typescript": "^5.2.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/qrcode": "^1.5.1",
+    "esbuild": "^0.19.2",
+    "esbuild-node-tsc": "^2.0.5",
+    "nodemon": "^3.1.9",
+    "prisma": "^4.16.1",
+    "ts-node": "^10.9.2"
+  }
+}

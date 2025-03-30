@@ -1,0 +1,10 @@
+---
+description: This rule for all the logics writing where cursor using any ai model it should not hallucinate any scenario it's own yes the flow is right but this should be kept in mind that is that user's use case
+globs: 
+alwaysApply: false
+---
+
+# Your rule content
+
+- You can @ files here
+- You can use markdown but dont have to
