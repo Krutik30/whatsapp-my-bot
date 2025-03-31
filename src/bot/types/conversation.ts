@@ -1,4 +1,4 @@
-export type ConversationStage = 'initial' | 'vaccine_question' | 'schedule_time' | 'end';
+export type ConversationStage = 'initial' | 'vaccine_question' | 'schedule_time' | 'no_response' | 'completed' | 'end';
 
 export interface ConversationState {
     stage: ConversationStage;

@@ -20,3 +20,18 @@ model Session {
   @@unique([sessionId, id], map: "unique_id_per_session_id")
   @@index([sessionId])
 }
+
+
+model UserPreference {
+    id              String   @id @default(cuid())
+    phoneNumber     String   @unique
+    name            String?
+    lastInteraction DateTime @default(now())
+    preferredTime   String?
+    wantsVaccine    Boolean  @default(false)
+    lastStage       String?
+    createdAt       DateTime @default(now())
+    updatedAt       DateTime @updatedAt
+
+    @@map("user_preferences")
+}

@@ -4,29 +4,56 @@ import { logger } from "../../shared";
 
 export async function sendMessage(sock: any, jid: string, text: string) {
     try {
+        logger.info({ jid, text }, 'Attempting to send text message');
         await sock.sendMessage(jid, { text });
+        logger.info({ jid }, 'Successfully sent text message');
     } catch (error) {
-        logger.error(error, 'Error sending message');
+        logger.error({ error, jid, text }, 'Error sending text message');
+        throw error;
     }
 }
 
-export async function sendButtonMessage(sock: any, message: ButtonMessage) {
+export async function sendButtonMessage(sock: any, message: any) {
     try {
-        await sock.sendMessage(message.to, {
-            text: message.text,
-            buttons: message.buttons,
-            headerType: message.headerType
-        });
+        logger.info({ jid: message.recipient }, 'Attempting to send button message');
+        await sock.sendMessage(message.recipient, message);
+        logger.info({ jid: message.recipient }, 'Successfully sent button message');
     } catch (error) {
-        logger.error(error, 'Error sending button message');
+        logger.error({ error, jid: message.recipient }, 'Error sending button message');
+        throw error;
     }
 }
 
 export function getMessageContent(message: proto.IWebMessageInfo): string {
-    return message.message?.conversation || 
-           message.message?.extendedTextMessage?.text ||
-           message.message?.imageMessage?.caption ||
-           message.message?.videoMessage?.caption || '';
+    try {
+        logger.info({ messageType: message.message ? Object.keys(message.message)[0] : 'unknown' }, 'Extracting message content');
+        
+        if (message.message?.conversation) {
+            return message.message.conversation;
+        }
+        
+        if (message.message?.extendedTextMessage?.text) {
+            return message.message.extendedTextMessage.text;
+        }
+        
+        if (message.message?.imageMessage?.caption) {
+            return message.message.imageMessage.caption;
+        }
+        
+        if (message.message?.videoMessage?.caption) {
+            return message.message.videoMessage.caption;
+        }
+        
+        if (message.message?.documentMessage?.caption) {
+            return message.message.documentMessage.caption;
+        }
+        
+        logger.warn({ messageType: message.message ? Object.keys(message.message)[0] : 'unknown' }, 'No text content found in message');
+        return '';
+    } catch (error) {
+        logger.error({ error }, 'Error extracting message content');
+        return '';
+    }
 }
 
 export function createButtonMessage(

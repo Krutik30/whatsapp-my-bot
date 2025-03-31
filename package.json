@@ -12,7 +12,7 @@
     "ok": "npm run build && npm run start"
   },
   "prisma": {
-    "schema": "src/prisma/schema.prisma"
+    "schema": "prisma/schema.prisma"
   },
   "nodemonConfig": {
     "ignore": [
@@ -25,12 +25,14 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.2.0",
+    "@types/natural": "^5.1.5",
     "@whiskeysockets/baileys": "^6.4.1",
     "baileys-bottle": "^2.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
+    "natural": "^8.0.1",
     "qrcode": "^1.5.3",
     "qrcode-terminal": "^0.12.0",
     "typescript": "^5.2.2"
