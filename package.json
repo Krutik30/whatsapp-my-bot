@@ -24,7 +24,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@prisma/client": "6.5.0",
+    "@prisma/client": "^5.10.2",
     "@types/natural": "^5.1.5",
     "@whiskeysockets/baileys": "^6.4.1",
     "baileys-bottle": "^2.1.2",
@@ -44,7 +44,7 @@
     "esbuild": "^0.19.2",
     "esbuild-node-tsc": "^2.0.5",
     "nodemon": "^3.1.9",
-    "prisma": "^4.16.1",
+    "prisma": "^5.10.2",
     "ts-node": "^10.9.2"
   }
 }
